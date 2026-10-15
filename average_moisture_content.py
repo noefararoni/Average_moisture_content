@@ -1,15 +1,8 @@
 import pandas as pd
-
-# --------------------------------------------------
-# SETTINGS
-# --------------------------------------------------
-
+# Write here the file that was written by the simulation program
 input_file = "Section_adsorption_65_90.rno"
+# Write here the output file
 output_file = "average_mc_section_adsorption_2nd_column.csv"
-
-# --------------------------------------------------
-# READ FILE
-# --------------------------------------------------
 
 results = []
 
@@ -41,9 +34,7 @@ with open(input_file, "r") as f:
             print(f"Warning: invalid section header: {header}")
             continue
 
-        # --------------------------------------------------
-        # READ DATA FOR THIS SECTION
-        # --------------------------------------------------
+        # Read the data
 
         values = []
         ignored_lines = 0
@@ -75,9 +66,7 @@ with open(input_file, "r") as f:
                     f"ignored invalid value: {parts[1]}"
                 )
 
-        # --------------------------------------------------
-        # CALCULATE AVERAGE
-        # --------------------------------------------------
+        # Calculate average
 
         if values:
             average = sum(values) / len(values)
@@ -97,9 +86,7 @@ with open(input_file, "r") as f:
                 f"No valid values found."
             )
 
-# --------------------------------------------------
-# SAVE RESULTS
-# --------------------------------------------------
+# Save results
 
 df = pd.DataFrame(
     results,
